@@ -2,6 +2,6 @@
  '(
    helm
    org
-   jg_twitter
+   jg-spacemacs-twitter
    )
 )
