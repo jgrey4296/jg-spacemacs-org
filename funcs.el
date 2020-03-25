@@ -117,7 +117,7 @@ the entry of interest in the bibfile.  but does not check that."
   (defun jg-spacemacs-org/pomodoro-start-hook ()
     ;; tweet out start and end points
     ;; use org-pomodoro-end-time
-    (jg_twitter/twitter-tweet-text
+    (jg-spacemacs-twitter/twitter-tweet-text
      (format "Emacs Pomodoro Timer Session to end: %s"
              (format-time-string "%H:%M (%d, %b, %Y)" org-pomodoro-end-time)))
     )
@@ -145,7 +145,7 @@ the entry of interest in the bibfile.  but does not check that."
            (formatted (format "** %s\n    %s\n" time (string-trim text)))
            )
       ;; tweet it
-      (jg_twitter/twitter-tweet-text text nil '(jg_twitter/tweet_sentinel))
+      (jg-spacemacs-twitter/twitter-tweet-text text nil '(jg-spacemacs-twitter/tweet_sentinel))
       ;;add it to the pomodoro log file
       (append-to-file formatted nil (expand-file-name jg-spacemacs-org/pomodoro-log-file))
       )
