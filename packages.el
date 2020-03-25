@@ -7,6 +7,7 @@
     org-pomodoro
     org-drill
     outline-toc
+    (ob-sqlite :location built-in)
     )
   )
 
@@ -146,4 +147,11 @@
 )
 (defun jg-spacemacs-org/init-outline-toc ()
   (use-package outline-toc)
+  )
+
+(defun jg-spacemacs-org/init-ob-sqlite ()
+  (use-package ob-sqlite
+    :init
+    (org-babel-do-load-languages 'org-babel-load-languages '((sqlite .t)))
+    )
   )
