@@ -8,6 +8,7 @@
     org-drill
     outline-toc
     (ob-sqlite :location built-in)
+    org-projectile
     )
   )
 
@@ -16,6 +17,7 @@
     :defer t
     :config
     (progn
+      ;; TODO add a keybind for helm-org-rifle
       (add-to-list 'helm-completing-read-handlers-alist '(org-capture . helm-org-completing-read-tags))
       (add-to-list 'helm-completing-read-handlers-alist '(org-set-tags . helm-org-completing-read-tags))
       )
@@ -148,10 +150,14 @@
 (defun jg-spacemacs-org/init-outline-toc ()
   (use-package outline-toc)
   )
-
 (defun jg-spacemacs-org/init-ob-sqlite ()
   (use-package ob-sqlite
     :init
     (org-babel-do-load-languages 'org-babel-load-languages '((sqlite .t)))
     )
+  )
+(defun jg-spacemacs-org/post-init-org-projectile ()
+  ;; from https://emacs.stackexchange.com/questions/18194/
+  (setq org-projectile-capture-template "** TODO [[%F::%(with-current-buffer (org-capture-get :original-buffer) (number-to-string (line-number-at-pos)))][%?]]\n\t%t\n\t
+%(with-current-buffer (org-capture-get :original-buffer) (buffer-substring (line-beginning-position) (line-end-position)))\n")
   )
