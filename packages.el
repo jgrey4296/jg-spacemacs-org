@@ -2,6 +2,7 @@
   '(
     helm-org
     org
+    evil-org
     academic-phrases
     org-ref
     org-pomodoro
@@ -34,6 +35,7 @@
    org-group-tags nil
    org-use-fast-tag-selection t
    org-tags-column 80
+   org-directory "~/github/writing"
    )
 
   (push 'org-indent-mode minor-mode-list)
@@ -160,4 +162,13 @@
   ;; from https://emacs.stackexchange.com/questions/18194/
   (setq org-projectile-capture-template "** TODO [[%F::%(with-current-buffer (org-capture-get :original-buffer) (number-to-string (line-number-at-pos)))][%?]]\n\t%t\n\t
 %(with-current-buffer (org-capture-get :original-buffer) (buffer-substring (line-beginning-position) (line-end-position)))\n")
+  )
+(defun jg-spacemacs-org/pre-init-evil-org ()
+  (spacemacs|use-package-add-hook evil-org
+    :post-config
+    (evil-define-key* '(normal visual) evil-org-mode-map
+                      (kbd ">") 'org-demote-subtree
+                      (kbd "<") 'org-promote-subtree
+                      )
+    )
   )
