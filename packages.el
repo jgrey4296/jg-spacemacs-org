@@ -91,7 +91,7 @@
     "a o a f"   'org-agenda-file-to-front
     "a o a r"   'org-remove-file
     "a o a l"   'org-agenda-list
-    "a o a F"   'jg-spacemacs-main-layer/list-agenda-files
+    "a o a F"   'jg-spacemacs-org/list-agenda-files
     "a o a t"   'org-tags-view
     ;; Agenda -> Calendar
     "a o a c"   'org-goto-calendar
