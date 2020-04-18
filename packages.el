@@ -166,9 +166,14 @@
 (defun jg-spacemacs-org/pre-init-evil-org ()
   (spacemacs|use-package-add-hook evil-org
     :post-config
-    (evil-define-key* '(normal visual) evil-org-mode-map
+    (evil-define-key* '(normal) evil-org-mode-map
+                      (kbd ">") #'(lambda () (interactive) (org-demote))
+                      (kbd "<") #'(lambda () (interactive) (org-promote))
+                      )
+    (evil-define-key* '(visual) evil-org-mode-map
                       (kbd ">") 'org-demote-subtree
                       (kbd "<") 'org-promote-subtree
                       )
+
     )
   )
