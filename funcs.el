@@ -19,6 +19,17 @@
     (interactive)
     (let ((current-prefix-arg '(16)))
       (call-interactively 'org-open-at-point)))
+  (defun jg-spacemacs-org/link-not-exists-p ()
+    (let* ((context (org-element-lineage
+                     (org-element-context)
+                     '(clock comment comment-block footnote-definition
+                             footnote-reference headline inline-src-block inlinetask
+                             keyword link node-property planning src-block timestamp)
+                     t))
+           (type (org-element-property :type context))
+           (path (org-element-property :path context)))
+      (and (equal type "file") (not (file-exists-p path)))))
+
   (defun jg-spacemacs-org/quicklook-link ()
     (let* ((context (org-element-lineage
                      (org-element-context)
