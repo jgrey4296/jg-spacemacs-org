@@ -10,7 +10,7 @@
     outline-toc
     (ob-sqlite :location built-in)
     org-projectile
-    )
+    org-superstar)
   )
 
 (defun jg-spacemacs-org/init-helm-org()
@@ -176,4 +176,7 @@
                       )
 
     )
+  )
+(defun jg-spacemacs-org/post-init-org-superstar ()
+  (setq org-hide-leading-stars t)
   )
